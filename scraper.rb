@@ -7,6 +7,8 @@ def fetch_top_movie_urls
   html_doc = Nokogiri::HTML(html_file)
 
   # TODO: return top movies URLs
+
+  []
 end
 
 def scrape_movie(url)
@@ -14,4 +16,12 @@ def scrape_movie(url)
   html_doc = Nokogiri::HTML(html_file)
 
   # TODO: return movie info hash
+
+  {
+    title: '',
+    year: 2021,
+    storyline: '',
+    director: '',
+    cast: ['', '', '']
+  }
 end
