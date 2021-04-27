@@ -7,8 +7,11 @@ def fetch_top_movie_urls
   html_doc = Nokogiri::HTML(html_file)
 
   # TODO: return top movies URLs
-
-  []
+  array = []
+  html_doc.search('.titleColumn a').first(5).each do |movie|
+    array << "https://www.imdb.com" + movie.attribute('href').value
+  end
+  array
 end
 
 def scrape_movie(url)
