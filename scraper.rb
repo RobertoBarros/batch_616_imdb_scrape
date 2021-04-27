@@ -19,10 +19,13 @@ def scrape_movie(url)
   html_doc = Nokogiri::HTML(html_file)
 
   # TODO: return movie info hash
-
+  title_and_year = html_doc.search('h1').text.strip
+  regex = /(?<title>.*).\((?<year>\d{4})\)$/
+  title = title_and_year.match(regex)[:title]
+  year = title_and_year.match(regex)[:year].to_i
   {
-    title: '',
-    year: 2021,
+    title: title,
+    year: year,
     storyline: '',
     director: '',
     cast: ['', '', '']
