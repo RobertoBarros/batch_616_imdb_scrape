@@ -26,8 +26,8 @@ def scrape_movie(url)
   {
     title: title,
     year: year,
-    storyline: '',
-    director: '',
-    cast: ['', '', '']
+    storyline: html_doc.search('.summary_text')[0].text.strip,
+    director: html_doc.search('.credit_summary_item a')[0].text,
+    cast: html_doc.search('.credit_summary_item a')[4..6].map {|cast| cast.text }
   }
 end
